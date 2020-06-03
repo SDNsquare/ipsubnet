@@ -12,7 +12,7 @@ func (s *Ip) GetNetworkPortion() string {
 func (s *Ip) First() string {
 	network := strings.Split(s.networkCalculation("%d", "."), ".")
 	r := s.GetIPAddressRange()
-	network[3] = r[0]
+	network[3] = strings.Split(r[0], ".")[3]
 	return strings.Join(network, ".")
 }
 

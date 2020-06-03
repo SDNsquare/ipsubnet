@@ -41,6 +41,6 @@ func (s *Ip) GetBroadcastAddress() string {
 func (s *Ip) Last() string {
 	broadcast := strings.Split(s.GetBroadcastAddress(), ".")
 	r := s.GetIPAddressRange()
-	broadcast[3] = r[1]
+	broadcast[3] = strings.Split(r[1], ".")[3]
 	return strings.Join(broadcast, ".")
 }
