@@ -2,6 +2,7 @@ package ipsubnet
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -12,7 +13,8 @@ func (s *Ip) GetNetworkPortion() string {
 func (s *Ip) First() string {
 	network := strings.Split(s.networkCalculation("%d", "."), ".")
 	r := s.GetIPAddressRange()
-	network[3] = strings.Split(r[0], ".")[3]
+	num, _ := strconv.Atoi(strings.Split(r[0], ".")[3])
+	network[3] = fmt.Sprintf("%d", num+1)
 	return strings.Join(network, ".")
 }
 

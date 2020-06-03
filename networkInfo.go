@@ -2,6 +2,7 @@ package ipsubnet
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -41,6 +42,7 @@ func (s *Ip) GetBroadcastAddress() string {
 func (s *Ip) Last() string {
 	broadcast := strings.Split(s.GetBroadcastAddress(), ".")
 	r := s.GetIPAddressRange()
-	broadcast[3] = strings.Split(r[1], ".")[3]
+	num, _ := strconv.Atoi(strings.Split(r[1], ".")[3])
+	broadcast[3] = fmt.Sprintf("%d", num-1)
 	return strings.Join(broadcast, ".")
 }
