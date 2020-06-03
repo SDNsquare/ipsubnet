@@ -9,6 +9,13 @@ func (s *Ip) GetNetworkPortion() string {
 	return s.networkCalculation("%d", ".")
 }
 
+func (s *Ip) First() string {
+	network := strings.Split(s.networkCalculation("%d", "."), ".")
+	r := s.GetIPAddressRange()
+	network[3] = r[0]
+	return strings.Join(network, ".")
+}
+
 func (s *Ip) GetNetworkPortionQuards() []int {
 	return convertQuardsToInt(strings.Split(s.networkCalculation("%d", "."), "."))
 }

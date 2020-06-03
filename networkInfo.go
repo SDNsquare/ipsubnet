@@ -37,3 +37,10 @@ func (s *Ip) GetBroadcastAddress() string {
 
 	return strings.Join(networkRangeQuads, ".")
 }
+
+func (s *Ip) Last() string {
+	broadcast := strings.Split(s.GetBroadcastAddress(), ".")
+	r := s.GetIPAddressRange()
+	broadcast[3] = r[1]
+	return strings.Join(broadcast, ".")
+}
